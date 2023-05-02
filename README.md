@@ -1,5 +1,34 @@
 # toolsExplainedz
 
+## Linux Swappiness
+
+Swappiness is the kernel parameter that defines how much (and how often) your Linux kernel will copy RAM contents to swap.
+
+This parameter's default value is “60” and it can take anything from “0” to “100”.
+
+`The higher the value` of the swappiness parameter, `the more aggressively your kernel will swap`.
+
+Now my system has 31G of physical memory. If I set `swappiness = 5`, it means that the system will start using swap when the memory is left with 31000 MB * 5% = `1550 MB`.
+
+```bash
+# Set swappiness
+$ vim /etc/sysctl.conf
+# vm.swappiness = 5 # edit here !
+
+# Clear the current swap space
+$ sudo swapoff -a
+$ sudo swapon -a
+
+# Reload swappiness
+$ sudo sysctl -p
+```
+
+Swap space can stop Linux from using `OOM killer`.
+
+This is a part of the Linux kernel that `kills programs that use too much memory`.
+
+But using swap can make the system slower.
+
 ## Alternatives
 
 Installing a new version of Golang.
