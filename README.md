@@ -1,5 +1,82 @@
 # toolsExplainedz
 
+## Personal Card
+
+### Insert the card
+
+```bash
+# install PC/SC Packages
+$ root> sudo apt-get update
+$ root> sudo apt-get install pcscd pcsc-tools
+$ root> reboot
+
+# No root permission is required for testing
+$ panhong> pcsc_scan
+#   Event number: 0
+
+# 错错错错错 !!!!!
+# Card state: Card inserted, Unresponsive card, (this is an abnormal message !!!!! )
+
+# 正确 正确 正确 正确 正确 !!!!!
+# Citizen Digital Certificate, Taiwan (PKI)
+#       http://moica.nat.gov.tw/ (this is a normal message !!!!!)
+
+# 把卡翻面
+# Sometimes it's because the card is plugged in upside down, you really have to flip the card over.
+```
+
+ as shown below
+
+<img src="./assets/image-20230522023029477.png" alt="image-20230522023029477" style="zoom:80%;" /> 
+
+### Check status
+
+download `Natural Personal Certificate Web Components`  from [this link](https://moica.nat.gov.tw/rac_plugin.html)
+
+```bash
+# Enter the component folder
+$ cd /home/panhong/go/src/github.com/panhongrainbow/toolsExplainedz/Natural\ Personal\ Certificate\ Web\ Components/ 
+# Download Natural Personal Certificate Web Components
+$ wget https://api-hisecurecdn.cdn.hinet.net/HiPKILocalSignServer/linux/HiPKILocalSignServerApp.tar.gz
+```
+
+execute Natural Personal Certificate Web Components
+
+```bash
+# Enter the component folder
+$ cd /home/panhong/go/src/github.com/panhongrainbow/toolsExplainedz/Natural\ Personal\ Certificate\ Web\ Components/1.3.4.3/HiPKILocalSignServerApp 
+# Execute Natural Personal Certificate Web Components
+$ ./start.sh 
+```
+
+as shown below
+
+<img src="./assets/image-20220514023214029.png" alt="image-20220514023214029" style="zoom:100%;" /> 
+
+1. open `IC card function test address` from [this link](http://localhost:61161/selfTest.htm)
+
+2. enter `your birthday`
+
+   (`The default value` is to count from the early years of the Republic of China, which is the former dynasty of China)
+
+3. next to run `IC card self-test`, must `pass all` 
+
+<img src="./assets/image-20220514100657875.png" alt="image-20220514100657875" style="zoom:100%;" /> 
+
+### Declare income tax
+
+Log in to  [the income tax portal website](https://efile.tax.nat.gov.tw/irxw/index.jsp), click Under the natural person certificate, start this processing in this way.
+<img src="./assets/image-20220514004824917.png" alt="image-20220514004824917" style="zoom:100%;" />
+
+System environment check, must pass all, then click System check completed, go to `identity verification page`.
+
+<img src="./assets/image-20220514102615266.png" alt="image-20220514102615266" style="zoom:100%;" />
+Enter `ID number and birthday(default pin code)`, click `Execute identity verification`
+<img src="./assets/image-20220514103143054.png" alt="image-20220514103143054" style="zoom:100%;" />
+
+Enter the income tax page
+<img src="./assets/image-20220514103857331.png" alt="image-20220514103857331" style="zoom:100%;" />
+
 ## Unetbootin
 
 [unetbootin github](https://unetbootin.github.io/linux_download.html)
