@@ -1,5 +1,84 @@
 # toolsExplainedz
 
+## Unetbootin
+
+[unetbootin github](https://unetbootin.github.io/linux_download.html)
+
+### Install
+
+```bash
+$ wget https://github.com/unetbootin/unetbootin/releases/download/702/unetbootin-linux64-702.bin
+
+$ sudo cp ./unetbootin-linux64-702.bin /unetbootin
+```
+
+### Start
+
+```bash
+$ sudo /usr/local/bin/unetbootin
+```
+
+<img src="assets/image-20230521051033491.png" alt="image-20230521051033491" style="zoom:80%;" /> 
+
+### Insert usb drvier
+
+```bash
+$ cfdisk /dev/sdX # Only keep one partition /dev/sdX1 
+
+$ mkfs.vfat /dev/sdX1
+```
+
+## Synergy
+
+This tool is used to `share mouse and keyboard across multiple computers`.
+
+Because computer memory is getting bigger and bigger now, my computer memory is up to 32G, the next one may be up to 64G, the previous one only has 16G, the new computer must be better, it’s a pity that the old computer has been thrown away, why not use software to `piece them together`, now the total available memory of the computer can be 48G. 
+
+I have tried three sets of software, `Synergy(Beta), Barrier and x2x`.
+
+Among them, `Synergy is the best to use`, possibly because there are too many different operating systems.
+
+For example, some operating systems `cannot control other computers`, but some can.
+
+Even if you choose for Synergy(Beta), there are still problems.
+
+### Issue
+
+I record the following issues:
+
+#### Synergy:
+
+1. Sometimes the mouse cannot cross the screen directly, you may have to `set your own shortcuts`, such as CTRL plus 5 and 6 2.
+2. Debian cannot control the mouse on Ubuntu, but Ubuntu cannot control the mouse on Debian, so I can only `set Ubuntu as the server`.
+
+#### Barrier:
+
+Barrier `does not automatically generate TLS encryption keys`, you have to generate them yourself.
+
+```bash
+$ cd /home/panhong/snap/barrier/682/.local/share/barrier/SSL/
+
+$ openssl req -x509 -nodes -days 365 -subj /CN=Barrier -newkey rsa:4096 -keyout Barrier.pem -out Barrier.pem
+```
+
+### Set up firewall
+
+```bash
+$ iptables -A INPUT -p tcp --dport 24800 -j ACCEPT
+$ iptables -A INPUT -p tcp --dport 24802 -j ACCEPT
+
+sudo iptables -A INPUT -p tcp -m multiport --dports 24800:3005 -j ACCEPT
+
+# Configure ubuntu with gufw
+$ apt-get install gufw
+```
+
+### Product related support
+
+https://symless.com/synergy/contact-support?topic=Synergy+3+Beta
+
+(2023/5/21)
+
 ## Linux Swappiness
 
 Swappiness is the kernel parameter that defines how much (and how often) your Linux kernel will copy RAM contents to swap.
@@ -95,7 +174,7 @@ typora
 | arguments         | $ContentRoot$/$FileName$ |
 | working directory | $ProjectFileDir$         |
 
-<img src="/home/panhong/go/src/github.com/panhongrainbow/toolsExplainedz/assets/image-20230422111907930.png" alt="image-20230422111907930" style="zoom:80%;" /> 
+<img src="assets/image-20230422111907930.png" alt="image-20230422111907930" style="zoom:80%;" /> 
 
 ## AI tools
 
