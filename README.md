@@ -1,5 +1,57 @@
 # toolsExplainedz
 
+## L2TP VPN
+
+Install VPN package 
+
+```bash
+$ apt-get install libreswan # For debian, just install this package on debian, no other configuration is needed to run VPN !
+
+$ apt-get install network-manager-l2tp  network-manager-l2tp-gnome libreswan # for ubuntu
+```
+
+IPSEC is used for encryption. Its configuration files need to be modified
+
+```bash
+$ vim /etc/ipsec.conf 
+```
+
+The content is as follows
+
+```
+root@debian6:~# cat /etc/ipsec.conf 
+# /etc/ipsec.conf - Libreswan 4.0 configuration file
+#
+# see 'man ipsec.conf' and 'man pluto' for more information
+#
+# For example configurations and documentation, see https://libreswan.org/wiki/
+
+config setup
+        ikev1-policy=accept
+```
+
+Start the VPN encryption service
+
+```bash
+$ systemctl start ipsec.service # Start encryption service
+$ systemctl enable ipsec.service
+
+$ systemctl stop xl2tpd # It will take up port 1701, causing VPN startup failure 
+$ systemctl disable xl2tpd
+```
+
+Debug command
+
+```bash
+$ /usr/lib/NetworkManager/nm-l2tp-service --debug # Start the VPN connection of KDE at the same time, you can see the following message (要同启动 KDE 的 VPN 连线)
+# Account and password information can be displayed in the middle for debugging (中间会显示帐号和密码，方便进行除错)
+# xl2tpd[12345]: start_pppd: I'm running:
+# xl2tpd[12345]: "/usr/sbin/pppd" 
+# xl2tpd[12345]: "plugin" 
+# xl2tpd[12345]: "pppol2tp.so" 
+# xl2tpd[12345]: "pppol2tp"
+```
+
 ## Personal Card
 
 ### Insert the card
@@ -25,13 +77,13 @@ $ panhong> pcsc_scan
 # Sometimes it's because the card is plugged in upside down, you really have to flip the card over.
 ```
 
- as shown below
+ As shown below
 
 <img src="./assets/image-20230522023029477.png" alt="image-20230522023029477" style="zoom:80%;" /> 
 
 ### Check status
 
-download `Natural Personal Certificate Web Components`  from [this link](https://moica.nat.gov.tw/rac_plugin.html)
+Download `Natural Personal Certificate Web Components`  from [this link](https://moica.nat.gov.tw/rac_plugin.html)
 
 ```bash
 # Enter the component folder
@@ -40,7 +92,7 @@ $ cd /home/panhong/go/src/github.com/panhongrainbow/toolsExplainedz/Natural\ Per
 $ wget https://api-hisecurecdn.cdn.hinet.net/HiPKILocalSignServer/linux/HiPKILocalSignServerApp.tar.gz
 ```
 
-execute Natural Personal Certificate Web Components
+Execute Natural Personal Certificate Web Components
 
 ```bash
 # Enter the component folder
@@ -49,17 +101,17 @@ $ cd /home/panhong/go/src/github.com/panhongrainbow/toolsExplainedz/Natural\ Per
 $ ./start.sh 
 ```
 
-as shown below
+As shown below
 
 <img src="./assets/image-20220514023214029.png" alt="image-20220514023214029" style="zoom:100%;" /> 
 
-1. open `IC card function test address` from [this link](http://localhost:61161/selfTest.htm)
+1. Open `IC card function test address` from [this link](http://localhost:61161/selfTest.htm)
 
-2. enter `your birthday`
+2. Enter `your birthday`
 
    (`The default value` is to count from the early years of the Republic of China, which is the former dynasty of China)
 
-3. next to run `IC card self-test`, must `pass all` 
+3. Next to run `IC card self-test`, must `pass all` 
 
 <img src="./assets/image-20220514100657875.png" alt="image-20220514100657875" style="zoom:100%;" /> 
 
@@ -242,7 +294,7 @@ $ sudo rm -rf /usr/local/go-1.19.2
 
 > [Jetbrains Reference](https://www.jetbrains.com/help/idea/settings-tools-external-tools.html)
 
-typora
+Typora
 
 | options           | parameters               |
 | ----------------- | ------------------------ |
