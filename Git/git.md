@@ -8,6 +8,7 @@ Below is an example of a git commit.
 | ------------ | --------------- | ----------------------------- | ------------------------------------------------------------ |
 | bugfix       | 🦠:bug:🦂         | Bugfix<br />错误              | 🦠:bug:🦂`bugfix ➡️ [<go>] <Fix issue with user login.>         |
 | doc          | 📔:books:        | Document<br />新增文件        | 📔:books: doc ➡️ [<go>] <Update README with installation instructions.> |
+| diary        | 📅               | diary<br />日记               | 📅 diary ➡️ [<go>] <Add daily progress notes.>                 |
 | feat         | :sparkles:⭐🌟    | New Feature<br />新增功能     | :sparkles:⭐🌟 feat ➡️ [<go>] <Add user profile picture upload.> |
 | hotfix       | :ambulance:🏥    | Hotfix<br />快速修正          | :ambulance:🏥 hotfix ➡️ [<go>] <Quickly resolve critical security issue.> |
 | init         | :tada:          | Initialize<br />初始化        | :tada: init ➡️ [<go>] <Initial commit.>                       |
@@ -28,6 +29,7 @@ $ cat << EOF > ~/.gitmessage.txt
 # The following are examples. 以下为范例
 # 🦠🐛🦂 bugfix ➡️ [<go>] <Fix issue with user login.> 错误
 # 📔📚 doc ➡️ [<go>] <Update README with installation instructions.> 新增文件
+# 📅 diary ➡️ [<go>] <Add daily progress notes.>
 # ✨⭐🌟 feat ➡️ [<go>] <Add user profile picture upload.> 新增功能
 # 🚑🏥 hotfix ➡️ [<go>] <Quickly resolve critical security issue.> 快速修正
 # 🎉 init ➡️ [<go>] <Initial commit.> 初始化
